@@ -18,11 +18,11 @@ def start(bot, update):
 
 def liga(bot, update):
     serial("1");
-    update.message.reply_text("Ok");
+    update.message.reply_text("Feito");
     
 def desliga(bot, update):
     serial("2");
-    update.message.reply_text("Ok");
+    update.message.reply_text("Feito");
 
 def serial(content):
     ser.write(content.encode('utf-8'))      # write a string
@@ -36,7 +36,10 @@ def main():
     
     
     updater.dispatcher.add_handler(CommandHandler('on', liga))
+    updater.dispatcher.add_handler(CommandHandler('abre', liga))
+    
     updater.dispatcher.add_handler(CommandHandler('off', desliga))
+    updater.dispatcher.add_handler(CommandHandler('fecha', desliga))
 
     # Start the Bot
     updater.start_polling()
